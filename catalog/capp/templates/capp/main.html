@@ -1,0 +1,28 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Catalog App</title>
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'capp/css/bootstrap.min.css' %}"
+          >
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'capp/css/style.css' %}"
+          >
+  </head>
+  <body>
+
+      {% block content %}
+      {% endblock %}
+
+      <script
+         src="{% static 'capp/js/jquery-1.11.3.min.js' %}">
+      </script>
+      <script
+         src="{% static 'capp/js/bootstrap.min.js' %}">
+      </script>
+      {% block scripts %}
+      {% endblock %}
+  </body>
+</html>

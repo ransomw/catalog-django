@@ -1,0 +1,12 @@
+{% extends "capp/main.html" %}
+{% block content %}
+{% include "capp/header.html" %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>{{item.title}}</h3>
+      <p>Description: {{item.description}}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
