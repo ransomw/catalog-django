@@ -18,31 +18,18 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
           <p class="navbar-btn">
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}"
+               class="btn">
+              Logout
+            </a>
+            {% else %}
             <a href="{% url 'login' %}"
                class="btn">
               Login
             </a>
-
-            <!-- {% if session.user_id %} -->
-            <!-- <a -->
-            <!--    class="btn"> -->
-            <!-- <\!-- <a href="<<url_for('logout')>>" -\-> -->
-            <!-- <\!--    class="btn"> -\-> -->
-            <!--   Logout -->
-            <!-- </a> -->
-            <!-- {% else %} -->
-            <!-- <a -->
-            <!--    class="btn"> -->
-            <!-- <\!-- <a href="<<url_for('login')>>" -\-> -->
-            <!-- <\!--    class="btn"> -\-> -->
-            <!--   Login -->
-            <!-- </a> -->
-            <!-- {% endif %} -->
+            {% endif %}
           </p>
-          <!-- <button type="button" -->
-          <!--         class="btn navbar-btn"> -->
-          <!--   Login -->
-          <!-- </button> -->
         </li>
       </ul>
     </div>

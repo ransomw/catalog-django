@@ -22,6 +22,7 @@ from cauth import views as cauth_views
 urlpatterns = [
     url(r'^$', capp_views.home, name='home'),
     url(r'^login$', cauth_views.login, name='login'),
+    url(r'^logout$', cauth_views.logout, name='logout'),
     url(r'^catalog/', include('capp.urls', namespace='capp')),
     url(r'^admin/', include(admin.site.urls)),
 ]

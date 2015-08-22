@@ -1,6 +1,8 @@
 {% load staticfiles %}
 {% load form_filters %}
 
+<!-- todo: make assets local to this app -->
+<!-- todo: better UX, especially for error display -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,6 +22,22 @@
           <h1 class="text-center">Sign Up or Sign in</h1>
         </div>
       </div>
+      {% if form.errors %}
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="alert alert-danger" role="alert">
+            Errors signing up or signing in
+          </div>
+          {% for err in form.non_field_errors %}
+          <div class="alert alert-danger" role="alert">
+            {{ err }}
+          </div>
+          {% endfor %}
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+      {% endif %}
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
@@ -30,11 +48,17 @@
               <label for="{{ form.email.id_for_label }}">
                 Email</label>
               {{ form.email|makeinput:'form-control, Enter email' }}
+              {% for err in form.errors.email %}
+              <span class="help-block">{{ err }}</span>
+              {% endfor %}
             </div>
             <div class="form-group">
               <label for="{{ form.password.id_for_label }}">
                 Password</label>
               {{ form.password|makeinput:'form-control, Password' }}
+              {% for err in form.errors.password %}
+              <span class="help-block">{{ err }}</span>
+              {% endfor %}
             </div>
             <button type="submit" class="btn"
                     name="{{ form.SIGN_IN }}">
@@ -44,11 +68,17 @@
               <label for="{{ form.password_confirm.id_for_label }}">
                 Confirm password</label>
               {{ form.password_confirm|makeinput:'form-control, Confirm password' }}
+              {% for err in form.errors.password_confirm %}
+              <span class="help-block">{{ err }}</span>
+              {% endfor %}
             </div>
             <div class="form-group">
               <label for="{{ form.name.id_for_label }}">
                 Name</label>
               {{ form.name|makeinput:'form-control, Enter name' }}
+              {% for err in form.errors.name %}
+              <span class="help-block">{{ err }}</span>
+              {% endfor %}
             </div>
             <button type="submit" class="btn"
                     name="{{ form.SIGN_UP }}">

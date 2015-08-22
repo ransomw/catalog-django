@@ -1,6 +1,7 @@
 from pdb import set_trace as st
 
 from django.shortcuts import render
+from django.template import RequestContext
 
 from .models import Category
 from .models import Item
@@ -13,8 +14,9 @@ def home(request):
     # todo: sort by modify time (desc)
     items = Item.objects.all()
     return render(request, TEMPLATE_DIR + '/home.html',
-                  {'categories': categories,
-                   'items': items})
+                  RequestContext(request,
+                        {'categories': categories,
+                         'items': items}))
 
 
 def items_list(request, category_name):
@@ -26,13 +28,15 @@ def items_list(request, category_name):
     items = Item.objects.all().filter(
         category=category.pk)
     return render(request, TEMPLATE_DIR + '/items.html',
-                  {'categories': categories,
-                   'items': items,
-                   'category': category})
+                  RequestContext(request,
+                                 {'categories': categories,
+                                  'items': items,
+                                  'category': category}))
 
 
 def item_detail(request, category_name, item_title):
     item = Item.objects.get(
         title__exact=item_title)
     return render(request, TEMPLATE_DIR + '/item.html',
-                  {'item': item})
+                  RequestContext(request,
+                                 {'item': item}))
