@@ -17,9 +17,11 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 from capp import views as capp_views
+from cauth import views as cauth_views
 
 urlpatterns = [
-    url(r'^$', capp_views.home),
+    url(r'^$', capp_views.home, name='home'),
+    url(r'^login$', cauth_views.login, name='login'),
     url(r'^catalog/', include('capp.urls', namespace='capp')),
     url(r'^admin/', include(admin.site.urls)),
 ]

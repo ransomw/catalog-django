@@ -1,4 +1,9 @@
+from pdb import set_trace as st
+
 from capp.models import Category, Item
+# although this import is unused, it must be included to avoid errors
+# when initializing Item objects b/c of the foreign key relation
+from cauth.models import User
 
 categorySoccer = Category(name="Soccer")
 categoryBasketball = Category(name="Basketball")

@@ -36,5 +36,3 @@ def item_detail(request, category_name, item_title):
         title__exact=item_title)
     return render(request, TEMPLATE_DIR + '/item.html',
                   {'item': item})
-
-

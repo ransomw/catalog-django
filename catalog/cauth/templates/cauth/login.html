@@ -1,0 +1,70 @@
+{% load staticfiles %}
+{% load form_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'capp/css/bootstrap.min.css' %}"
+          >
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'capp/css/login.css' %}"
+          >
+
+  </head>
+  <body>
+
+    <div id="sign-up-in" class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center">Sign Up or Sign in</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+              <label for="{{ form.email.id_for_label }}">
+                Email</label>
+              {{ form.email|makeinput:'form-control, Enter email' }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.password.id_for_label }}">
+                Password</label>
+              {{ form.password|makeinput:'form-control, Password' }}
+            </div>
+            <button type="submit" class="btn"
+                    name="{{ form.SIGN_IN }}">
+              Sign in
+            </button>
+            <div class="form-group">
+              <label for="{{ form.password_confirm.id_for_label }}">
+                Confirm password</label>
+              {{ form.password_confirm|makeinput:'form-control, Confirm password' }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.name.id_for_label }}">
+                Name</label>
+              {{ form.name|makeinput:'form-control, Enter name' }}
+            </div>
+            <button type="submit" class="btn"
+                    name="{{ form.SIGN_UP }}">
+              Sign up
+            </button>
+          </form>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+
+    <script
+       src="{% static 'capp/js/jquery-1.11.3.min.js' %}">
+    </script>
+    <script
+       src="{% static 'capp/js/bootstrap.min.js' %}">
+    </script>
+  </body>
+</html>
