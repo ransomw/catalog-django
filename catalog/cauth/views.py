@@ -53,7 +53,8 @@ def login(request):
             #       ... cf. stock views
             user.name = name
             user.save()
-            _login(request, user)
+            auth_user = authenticate(username=email, password=password)
+            _login(request, auth_user)
             return HttpResponseRedirect(reverse('home'))
         else:
             return HttpResponseBadRequest(

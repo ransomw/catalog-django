@@ -80,5 +80,3 @@ item = Item(
     category=categorySoccer)
 item.save()
 
-
-
